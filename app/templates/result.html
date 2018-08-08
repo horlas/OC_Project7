@@ -1,0 +1,17 @@
+{% extends 'default.html' %}
+{% block content %}
+<h2>Affichage de la réponse</h2>
+    <div class="container" style = "padding-bottom: 10px">
+          <div id="coord">{{coordinates}}</div>
+           <!--balises pour recuperer les données lat et long pour affichage de la map-->
+          <div id="lat" style="display:none">{{latitude}}</div>
+          <div id="lng" style="display:none">{{longitude}}</div>
+          <div id="adress">Adresse: {{adresse}}</div>
+          <div id="map"></div>
+          <div id = "story">{{wikipedia}}</div>
+    </div>
+
+<!--<script src="../static/js/ajax.js"></script>-->
+    <script src="../static/js/javascript.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{key}}&callback=initMap"></script>
+{% endblock %}
