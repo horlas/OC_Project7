@@ -1,45 +1,48 @@
-from flask import Flask, render_template, request
-import googlemaps
-import requests
-from .utils import *
-from .models import *
+from flask import Flask, render_template, request, jsonify
+from .methods import *
 
+#from flask_googlemaps import GoogleMaps
+#from flask_googlemaps import Map
 
 app = Flask(__name__)
 
 # Config options - Make sure you created a 'config.py' file.
 app.config.from_object('config')
-gmaps = googlemaps.Client(key = app.config['GG_APP_ID'])
+#gmaps = googlemaps.Client(key=app.config['GG_APP_ID'])
 
 
-# To get one variable, tape app.config['MY_VARIABLE']
+# Initialize the extension
 
-@app.route('/')
-@app.route('/index/')
-def index():
-    return render_template("index.html")
+#GoogleMaps(app, key = app.config['GG_APP_ID'])
 
 
-@app.route('/')
-@app.route('/result/')
-def result():
-    place = request.args.get("place")
+@app.route('/_add_datas')
+def add_datas():
+    place = request.args.get("place", "Résidence Foyer Montpellieret", type=str)
     # Geocoding an address
     coord = geocoding(place)
     address = get_add(coord)
-
-    key = app.config['GG_APP_ID'] #to send api key to the call javascript result.html to display the map
-
     text = some_words_about(place)
+    #mymap = Map(
+    #    identifier = "map",
+    #    lat = coord[0],
+    #    lng = coord[1],
+    #    markers = [(coord[0], coord[1])],
+    #    zoom = 13)
 
-    return render_template("result.html",
-                           coordinates = coord,
-                           latitude = coord[0],
-                           longitude = coord[1],
-                           adresse = address,
-                           wikipedia = text,
-                           key = key)
+    return jsonify(coordinates=coord,
+                   address=address,
+                   lat=coord[0],
+                   lng=coord[1],
+                   wikipedia=text)
 
+
+@app.route('/')
+@app.route('/home/')
+def index():
+    key = app.config['GG_APP_ID']  # to send api key to the call javascript result.html to display the map
+    return render_template("home.html",
+                           key=key)
 
 
 if __name__ == "__main__":

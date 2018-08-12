@@ -5,13 +5,23 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>Projet7</title>
     <style>
-      /* Set the size of the div element that contains the map */
+      /* Set the size of the div element witch contains the map */
       #map {
         height: 300px;  /* The height is 400 pixels */
         width: 60%;  /* The width is the width of the web page */
        }
     </style>
+    <!--load jquery-->
 
+    <script src="//code.jquery.com/jquery-3.3.1.js"></script>
+    <!--set the script root variable-->
+    <script type=text/javascript>
+        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }}
+    </script>
+
+    <!-- initialyse googlemap app-->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{key}}"></script>
+    <script async type="text/javascript" src="../static/js/javascript.js"></script>
 
 </head>
 
@@ -34,6 +44,6 @@
     </footer>
 
 
-    <script src="//code.jquery.com/jquery-3.3.1.js"></script>
+
 </body>
 </html>

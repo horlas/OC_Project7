@@ -1,0 +1,21 @@
+{% extends 'default.html' %}
+{% block content %}
+        <h2>Saisie d'une adresse</h2>
+        <p><input type = text name="place">
+
+        <h2>Réponse du Robot</h2>
+
+            <div class="container" style = "padding-bottom: 10px"  >
+                <div id="coord"></div>
+                <!--balises pour recuperer les données lat et long pour affichage de la map-->
+                <div id="lat"></div>
+                <div id="lng"></div>
+                <div id="address"></div>
+                <div id ="story"></div>
+                <div id="map"></div>
+
+            </div>
+
+        <p><a href=# id="submit">Envoyer</a>
+
+{% endblock %}
