@@ -1,0 +1,46 @@
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.bg-1{
+  background-color: #1abc9c;
+  color: darkslategray;
+  padding-top: 20px;
+}
+
+.bg-2{
+  background-color: #b3ffe6;
+  color: #001a11;
+}
+
+#map-container {
+  height: 300px;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 5px 10px 10px 10px;
+}
+
+
+#gp {
+  background: beige;
+  border-radius: 10px;
+}
+
+
+[class*="col-"], footer {
+
+  background-color: lightgreen;
+
+  border: 2px solid black;
+
+  border-radius: 6px;
+
+  line-height: 40px;
+
+  text-align: center;
+
+}
+

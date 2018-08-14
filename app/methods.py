@@ -36,6 +36,12 @@ def get_add(coord):
 
 #Treatment of user entry
 ########################################################################
+#def add_plus(place):
+#    """to add plus between words"""
+#    place
+
+
+
 def extract_own_name(place):
     """to extract only the own name"""
     c_name = r"\b[a-z]*"
@@ -44,21 +50,37 @@ def extract_own_name(place):
     return place
 
 
-#def clean_entry(place):
-#    """clean entry in order to push to API wikipedia"""
-#    stop_words = get_stop_words("fr")
-#    words = place.split()
-#    words_cleaned = [i for i in words if i not in stop_words]
-#    return " ".join(words_cleaned)
+#define stop_words
+stop_words = get_stop_words("fr")
+add_stop_words = "Salut GrandPy ! Est-ce que tu connais l'adresse d' ?".split()
+for i in add_stop_words:
+    stop_words.append(i)
+
+def clean_entry(place):
+    # clean user entry in order to push to API wikipedia
+
+    words = place.split()
+    words_cleaned = [i for i in words if i not in stop_words]
+    entry = " ".join(words_cleaned)
+    print(entry)
+    return entry
 
 
 def test_empty_entry(file):
     """to ensure that the page required is not empty"""
     k = False
-    a = file["query"]["pages"][0]
-    for i in a.keys():
-        if i == "missing":
-            k = a['missing']
+    try:
+        a = file["query"]["pages"][0]
+        for i in a.keys():
+            if i == "missing":
+                k = a['missing']
+            elif i == "invalid":
+                k = a['invalid']
+
+    except KeyError:
+        print("no wikipedia page found")
+        k = True
+        return k
 
     return k
 
@@ -75,20 +97,9 @@ def extract_text(file):
 #Api Wikipedia
 def call_wiki(place):
     """Call Api Wikipedia"""
-
-    #entry = clean_entry(place)
-
-    #clean user entry in order to push to API wikipedia
-    stop_words = get_stop_words("fr")
-    words = place.split()
-    words_cleaned = [i for i in words if i not in stop_words]
-    entry = " ".join(words_cleaned)
-
-
-
     # format url
     url_begin = "https://fr.wikipedia.org/w/api.php?action=query&titles="
-    url_title = entry
+    url_title = place
     url_end = "&redirects&prop=extracts&format=json&formatversion=2&exsentences=3"
     url = "{}{}{}".format(url_begin, url_title, url_end)
 
@@ -102,13 +113,18 @@ def call_wiki(place):
 def some_words_about(place):
     """Extract and treat wikipedia contents"""
     file = call_wiki(place)
-
     test = test_empty_entry(file)
+    print(test)
     if test is True:
         place = extract_own_name(place)
+        print("Top")
+        print(place)
         file = call_wiki(place)
+        print(file)
         test = test_empty_entry(file)
+        print(test)
         if test is True:
+            print("TOP10")
             text = "Oups page non trouvée"
         else:
             text = extract_text(file)

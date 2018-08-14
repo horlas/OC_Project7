@@ -1,0 +1,126 @@
+{# ``base.html`` is the template all our other templates derive from. While
+   Flask-Bootstrap ships with its own base, it is good form to create a custom
+   one for our app, as it allows customizing some aspects.
+
+   Deriving from bootstap/base.html gives us a basic page scaffoling.
+
+   You can find additional information about template inheritance at
+
+   http://jinja.pocoo.org/docs/templates/#template-inheritance
+#}
+{%- extends "bootstrap/base.html" %}
+
+{# We also set a default title, usually because we might forget to set one.
+   In our sample app, we will most likely just opt not to change it #}
+{% block title %}Grand Py-Bot, le papy robot{% endblock %}
+
+{# While we are at it, we also enable fixes for legacy browsers. First we
+   import the necessary macros: #}
+{% import "bootstrap/fixes.html" as fixes %}
+
+{# Then, inside the head block, we apply these. To not replace the header,
+   ``super()`` is used: #}
+{% block head %}
+{{super()}}
+
+{#- Docs: http://pythonhosted.org/Flask-Bootstrap/macros.html#fixes
+   The sample application already contains the required static files. #}
+{{fixes.ie8()}}
+{%- endblock %}
+
+{# Adding our own CSS files is also done here. Check the documentation at
+   http://pythonhosted.org/Flask-Bootstrap/basic-usage.html#available-blocks
+   for an overview. #}
+{% block styles -%}
+    {{super()}}  {# do not forget to call super or Bootstrap's own stylesheets
+                    will disappear! #}
+    <link rel="stylesheet" type="text/css"
+          href="{{url_for('static', next='/', filename='css/main.css')}}">
+{% endblock %}
+
+
+{#content script#}
+{% block scripts %}
+{{super()}}
+<script src="//code.jquery.com/jquery-3.3.1.js"></script>
+
+
+    <!--set the script root variable-->
+<script type=text/javascript>$SCRIPT_ROOT = {{ request.script_root|tojson|safe }}</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key={{config['GG_APP_ID']}}"></script>
+<script async type="text/javascript" src="../static/js/javascript.js"></script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Projet7</title>
+    <style>
+      /* Set the size of the div element witch contains the map */
+      #map {
+        height: 300px;  /* The height is 400 pixels */
+        width: 60%;  /* The width is the width of the web page */
+       }
+    </style>
+    <!--load jquery-->
+
+    <script src="//code.jquery.com/jquery-3.3.1.js"></script>
+    <!--set the script root variable-->
+    <script type=text/javascript>
+        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }}
+    </script>
+
+
+
+</head>
+
+<body>
+        <header>
+            <img src="../static/img/images.png" alt="Logo en attente" class="logo" height = 150px width= auto style= "float:left">
+            <h1 style="line-height: 150px">Prototype</h1>
+        </header>
+
+
+
+        {% block content %}{% endblock %}
+
+
+
+
+    <footer style = "padding-top: 50px; font-size : 1.7em" >
+    <p style = "display:inline">Aurelia Gourbère</p>
+    <a href="https://github.com/horlas/OC_Project7" target="_blank" style = display:inline>Github</a>
+    </footer>
+    <!-- initialyse googlemap app-->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{config['GG_APP_ID']}}"></script>
+    <script async type="text/javascript" src="../static/js/javascript.js"></script>
+
+
+</body>
+</html>

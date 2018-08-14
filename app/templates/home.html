@@ -1,21 +1,44 @@
-{% extends 'default.html' %}
+{% extends 'base.html' %}
 {% block content %}
-        <h2>Saisie d'une adresse</h2>
-        <p><input type = text name="place">
+        <div class="container">
 
-        <h2>Réponse du Robot</h2>
+                <div class="page-header bg-1 text-center col-lg-12">
+                    <h1>GrandPy Papy Robot</h1>
+                    <p><img src="../static/img/grandfather.png" class="rounded float-right" alt="logo" style="width:5%"></p>
+                    <small>Un jeu de questions réponse entre le grand père et toi</small><br/>
+                    <small>Demande lui où il habite ?...</small>
+                </div>
 
-            <div class="container" style = "padding-bottom: 10px"  >
-                <div id="coord"></div>
-                <!--balises pour recuperer les données lat et long pour affichage de la map-->
-                <div id="lat"></div>
-                <div id="lng"></div>
-                <div id="address"></div>
-                <div id ="story"></div>
-                <div id="map"></div>
+                <div class ="row bg-2">
 
-            </div>
+                    <div class="col-lg-6">Ce que dit Grand Py
+                        <section class="gp">Bonjour petite! Où veux aller?</section>
+                        <div id="coord"></div>
+                        <!--balises pour recuperer les données lat et long pour affichage de la map-->
+                        <div id="lat"></div>
+                        <div id="lng"></div>
+                        <div id="address"></div>
+                        <div id ="story"></div>
+                        <section class="col-lg-6">
+                        <div id="map-container"></div>
+                        </section>
+                    </div>
 
-        <p><a href=# id="submit">Envoyer</a>
+
+                    <div class="col-lg-6">Ce que dit User
+                        <div class="input-group">
+                            <input type=text class="form-control" name="place">
+                            <span class="input-group-btn">
+                            <a href="#" id="submit" class="btn btn-info" role="button">Envoyer</a>
+                            </span>
+                        </div>
+                    </div>
+                
+                </div>
+
 
 {% endblock %}
+
+
+
+

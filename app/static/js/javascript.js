@@ -16,7 +16,7 @@ $(function() {
                                  $("#address").text(data.address);
                                  $("#story").text(data.wikipedia);
                                  var map = initMap();
-                                 $("#map").val(map)
+                                 $("#map-container").val(map)
                 });
                 return false;}
                 );
@@ -37,7 +37,7 @@ function initMap() {
   console.log(lng);
 
   // The map, centered at right place
-    map = new google.maps.Map(document.getElementById('map'), {
+    map = new google.maps.Map(document.getElementById('map-container'), {
           zoom: 15,
           center: new google.maps.LatLng(lat, lon)},
         )
