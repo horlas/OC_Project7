@@ -10,12 +10,12 @@ $(function() {
                     //data
                     {place: $('input[name="place"]').val()},
                     //func
-                    function (data) {$("#coord").text(data.coordinates);
+                    function (data) {//$("#coord").text(data.coordinates);
                                  $("#lat").text(data.lat);
                                  $("#lng").text(data.lng);
-                                 $("#address").text(data.address);
 
-                                 $('<div class="message">').text(data.wikipedia).appendTo('#grandpy');
+                                 $('<div class="gp_mess">').text(data.address).appendTo('#grandpy');
+                                 $('<div class="gp_mess">').text(data.wikipedia).appendTo('#grandpy');
                                  var map = initMap();
                                  $("#map-container").val(map)
                 });
@@ -54,7 +54,7 @@ function initMap() {
 
 function getMes(){
 var user_mes = $("#target").val();
-$('<div class="message">').html(user_mes).appendTo('#user');
+$('<div class="us_mess">').html(user_mes).appendTo('#user');
 }
 
 

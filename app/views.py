@@ -26,7 +26,7 @@ def add_datas():
     text = some_words_about(place)
 
 
-    return jsonify(coordinates=coord,
+    return jsonify(#coordinates=coord,
                    address=address,
                    lat=coord[0],
                    lng=coord[1],

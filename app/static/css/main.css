@@ -1,11 +1,35 @@
 
 header{
-  background-color: #b58900;
+  background-color: #f5ccff;
   border-radius: 5px;
-  border-bottom: #45122b;
+
+  line-height: 150%;
+  border-width:5px;
+  border-bottom-style:double;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
+footer{
+  background-color: #f5ccff;
+  border-radius: 6px;
+  border-width:5px;
+  border-top-style:double;
+  padding: 5px;
+  margin-top: 10px ;
+}
 
+.gp_mess{
+  background-color: #cccccc;
+  border: 2px solid black;
+  border-radius: 6px;
+  line-height: 20px;
+  padding-bottom: 50px;
+}
+
+.us_mess{
+  background-color: #a6d2db;
+}
 
 #map-container {
   height: 300px;
@@ -15,7 +39,7 @@ header{
 }
 
 #grandpy {
-  background-color: #cccccc;
+  background-color: ivory;
   border: 2px solid black;
 
   border-radius: 6px;
@@ -26,7 +50,7 @@ header{
 }
 
 #user {
-  background-color: #a6d2db;
+  background-color: ivory;
   border: 2px solid black;
 
   border-radius: 6px;
@@ -57,12 +81,7 @@ header{
   border-radius: 50%;
 }
 
-footer{
-  background-color: #b3b3cc ;
-  border-radius: 6px;
-  padding: 10px;
-  margin: 20px ;
-}
+
 
 
 
