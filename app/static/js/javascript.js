@@ -2,7 +2,7 @@
 //Load JSON-encoded data from the server using a GET HTTP request.
 //call root /_add_datas
 $(function() {
-            $('a#submit').bind('click', function() {
+            $('#submit').bind('click', function() {
                 //$.getJSON(--url, --data, --func)
                 $.getJSON(
                     //url
@@ -14,7 +14,8 @@ $(function() {
                                  $("#lat").text(data.lat);
                                  $("#lng").text(data.lng);
                                  $("#address").text(data.address);
-                                 $("#story").text(data.wikipedia);
+
+                                 $('<div class="message">').text(data.wikipedia).appendTo('#grandpy');
                                  var map = initMap();
                                  $("#map-container").val(map)
                 });
@@ -51,13 +52,11 @@ function initMap() {
 
 }
 
+function getMes(){
+var user_mes = $("#target").val();
+$('<div class="message">').html(user_mes).appendTo('#user');
+}
 
 
-
-
-
-
-
-//window.onload = initMap();
 
 

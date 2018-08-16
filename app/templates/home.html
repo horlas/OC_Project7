@@ -1,43 +1,100 @@
 {% extends 'base.html' %}
 {% block content %}
-        <div class="container">
 
-                <div class="page-header bg-1 text-center col-lg-12">
-                    <h1>GrandPy Papy Robot</h1>
-                    <p><img src="../static/img/grandfather.png" class="rounded float-right" alt="logo" style="width:5%"></p>
-                    <small>Un jeu de questions réponse entre le grand père et toi</small><br/>
-                    <small>Demande lui où il habite ?...</small>
-                </div>
+    <header id="header" class="jumbotron text-center">
+        <h1>GrandPy Papy Robot
+        <p><img src="../static/img/grandfather.png" alt="logo" style="width:5%"></p>
+        </h1>
+        <p>Un jeu de questions réponse entre grand père et toi</p>
+        <p>Demande lui où il habite ?...</p>
+    </header>
+<div class="container">
+<div class="row">
+    <div class="col-sm-6">
 
-                <div class ="row bg-2">
 
-                    <div class="col-lg-6">Ce que dit Grand Py
-                        <section class="gp">Bonjour petite! Où veux aller?</section>
+                <div >
+
+                    <div id="grandpy">Ce que dit Grand Py
+                        <div class="message">Bonjour petite! Où veux aller?</div>
                         <div id="coord"></div>
                         <!--balises pour recuperer les données lat et long pour affichage de la map-->
                         <div id="lat"></div>
                         <div id="lng"></div>
                         <div id="address"></div>
                         <div id ="story"></div>
-                        <section class="col-lg-6">
-                        <div id="map-container"></div>
-                        </section>
+
                     </div>
+                </div>
+    </div>
 
 
-                    <div class="col-lg-6">Ce que dit User
-                        <div class="input-group">
-                            <input type=text class="form-control" name="place">
-                            <span class="input-group-btn">
-                            <a href="#" id="submit" class="btn btn-info" role="button">Envoyer</a>
-                            </span>
-                        </div>
-                    </div>
-                
+<div class="row">
+    <div class="col-sm-6">
+
+                <div id="user">Ce que dit User
+                    <div class="message">Je suis ta Grand mère!</div>
+                </div>
+
+                <label for="target">As-tu une question pour Grandpy?</label>
+
+                <div class="input-group">
+                    <input id="target" type=text class="form-control" name="place">
+                    <!--<span class="input-group-btn">-->
+                    <span class="input-group-btn">
+                        <button id="submit" class="btn btn-primary" type="button" onclick="getMes();"><i class="far fa-smile"></i>  Dis moi GPy?</button>
+
+                     </span>
+                    <!--  <a href="#" id="submit" class="btn btn-primary" type="button" onclick="getMes();"><span class="fa fa-smile"></span>Dis-moi GPy?</a>
+                    </span>-->
+                    <!--<div class="input-group-append">
+                    <button id="submit" class="btn btn-primary" type="button" onclick="getMes();"><i class="far fa-smile"></i>Dis moi GPy?</button>
+                    </div>-->
                 </div>
 
 
+
+                    <!--<span class="input-group-btn">
+                    <a href="#" id="submit" class="btn btn-success" role="button" onclick="getMes();">Dis-moi GPy?</a>
+                    </span>-->
+
+
+
+    </div>
+</div>
+
+
+                <section id = "map-container">
+                    <div class="container-fluid"></div>
+                </section>
+
+                <footer id="footer" class ="row text-center">
+                        <a href="#header" class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-chevron-up"></span>Up
+                        </a>
+
+
+
+                        <h4>2018 Aurélia Gourbère
+                        <a href="https://github.com/horlas/OC_Project7" class="btn btn-social-icon btn-github">
+                            <span class="fa fa-github "></span>
+                        </a>
+                        </h4>
+
+
+                </footer>
+
+
+
+
+
+
+
+
+        </div>
 {% endblock %}
+
+
 
 
 

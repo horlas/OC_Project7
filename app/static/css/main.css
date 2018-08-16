@@ -1,20 +1,11 @@
-.container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+
+header{
+  background-color: #b58900;
+  border-radius: 5px;
+  border-bottom: #45122b;
 }
 
-.bg-1{
-  background-color: #1abc9c;
-  color: darkslategray;
-  padding-top: 20px;
-}
 
-.bg-2{
-  background-color: #b3ffe6;
-  color: #001a11;
-}
 
 #map-container {
   height: 300px;
@@ -23,24 +14,55 @@
   box-shadow: 5px 10px 10px 10px;
 }
 
-
-#gp {
-  background: beige;
-  border-radius: 10px;
-}
-
-
-[class*="col-"], footer {
-
-  background-color: lightgreen;
-
+#grandpy {
+  background-color: #cccccc;
   border: 2px solid black;
 
   border-radius: 6px;
 
   line-height: 40px;
-
-  text-align: center;
+  padding-bottom: 50px;
 
 }
+
+#user {
+  background-color: #a6d2db;
+  border: 2px solid black;
+
+  border-radius: 6px;
+
+  line-height: 40px;
+  padding-bottom: 50px;
+}
+
+
+
+
+
+
+
+.message {
+  background: beige;
+  border-radius: 10px;
+}
+
+
+
+.fa {
+  font-size: 40px;
+  width: 30px;
+  color: black;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+}
+
+footer{
+  background-color: #b3b3cc ;
+  border-radius: 6px;
+  padding: 10px;
+  margin: 20px ;
+}
+
+
 
