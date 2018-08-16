@@ -14,8 +14,8 @@ $(function() {
                                  $("#lat").text(data.lat);
                                  $("#lng").text(data.lng);
 
-                                 $('<div class="gp_mess">').text(data.address).appendTo('#grandpy');
-                                 $('<div class="gp_mess">').text(data.wikipedia).appendTo('#grandpy');
+                                 $('<div class="gp_mess col-lg-6 col-lg-offset-1">').text(data.address).appendTo('#text_area');
+                                 $('<div class="gp_mess col-lg-6">').text(data.wikipedia).appendTo('#text_area');
                                  var map = initMap();
                                  $("#map-container").val(map)
                 });
@@ -54,7 +54,7 @@ function initMap() {
 
 function getMes(){
 var user_mes = $("#target").val();
-$('<div class="us_mess">').html(user_mes).appendTo('#user');
+$('<div class="us_mess col-lg-7 col-lg-offset-5">').html(user_mes).appendTo('#text_area');
 }
 
 
