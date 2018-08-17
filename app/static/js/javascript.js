@@ -55,8 +55,18 @@ function initMap() {
 function getMes(){
 var user_mes = $("#target").val();
 $('<div class="us_mess col-lg-7 col-lg-offset-5">').html(user_mes).appendTo('#text_area');
+//empty the input area
+//document.getElementById("target").value = "";
 }
 
 
+//to activate Enter key
+var input = document.getElementById("target");
+input.addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        document.getElementById("submit").click();
+    }
+});
 
 

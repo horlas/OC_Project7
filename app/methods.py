@@ -1,6 +1,8 @@
 import googlemaps
 import re
 import requests
+import random
+from .const import *
 
 from config import *
 
@@ -29,41 +31,42 @@ def geocoding(place):
 def get_add(coord):
     """get the place adress"""
     reverse_geocode_result = gmaps.reverse_geocode(coord)
-
-    #a = extract_add(reverse_geocode_result)
     a = reverse_geocode_result[0]["formatted_address"]
-    return a # type: str
+    b = random.choice(ANSWERSADD)
+    res = "{}{}".format(b,a)
+    return res # type: str
 
 #Treatment of user entry
 ########################################################################
-#def add_plus(place):
-#    """to add plus between words"""
-#    place
+#def extract_own_name(place):
+#    """to extract only the own name"""
+#    c_name = r"\b[a-z]*"
+#    own_name = r"[A-Z][a-z]*"
+#    place = re.sub(c_name,"",place)
+#    return place
 
-
-
-def extract_own_name(place):
-    """to extract only the own name"""
-    c_name = r"\b[a-z]*"
-    own_name = r"[A-Z][a-z]*"
-    place = re.sub(c_name,"",place)
-    return place
-
-
-#define stop_words
-stop_words = get_stop_words("fr")
-add_stop_words = "Salut GrandPy ! Est-ce que tu connais l'adresse d' ?".split()
-for i in add_stop_words:
-    stop_words.append(i)
 
 def clean_entry(place):
     # clean user entry in order to push to API wikipedia
 
     words = place.split()
-    words_cleaned = [i for i in words if i not in stop_words]
+    words_cleaned = [i for i in words if i not in STOPWORDS]
     entry = " ".join(words_cleaned)
+    #remove the letter before the "'" character
+    r =r".[']"
+    entry = re.sub(r,"",entry)
     print(entry)
     return entry
+
+def place_for_ggapp(place_gg):
+    '''in order to give a correct entry for google "word+word"'''
+    place = place_gg.split()
+    entry = "+".join(place)
+    print(entry)
+    return entry
+
+
+
 
 
 def test_empty_entry(file):
@@ -97,15 +100,36 @@ def extract_text(file):
 #Api Wikipedia
 def call_wiki(place):
     """Call Api Wikipedia"""
+    #first call all main page
+    url_begin = "https://fr.wikipedia.org/w/api.php?action=query&format=json&list=search&utf8=&srsearch="
+    url_title = place
+    url = "{}{}".format(url_begin, url_title)
+    print(url)
+    #and we took the first occurrence
+    response = requests.get(url)
+    file = response.json()
+    try:
+        place = file["query"]["search"][0]["title"]
+    except IndexError:
+        place = "Coq"
+
     # format url
     url_begin = "https://fr.wikipedia.org/w/api.php?action=query&titles="
     url_title = place
-    url_end = "&redirects&prop=extracts&format=json&formatversion=2&exsentences=3"
+    url_end = "&prop=extracts&exsentences=3&format=json&explaintext"
     url = "{}{}{}".format(url_begin, url_title, url_end)
 
     # call api
+    print(url)
     response = requests.get(url)
     file = response.json()
+
+    #format GPY answer
+    #b = random.choice(ANSWERSSTORY)
+    #res = "{}{}".format(b, file)
+    #if place == "Coq":
+    #    res = "{}{}".format(ANSWERWHERENOIDEA, file)
+
     return file
 
 
@@ -113,24 +137,26 @@ def call_wiki(place):
 def some_words_about(place):
     """Extract and treat wikipedia contents"""
     file = call_wiki(place)
-    test = test_empty_entry(file)
-    print(test)
-    if test is True:
-        place = extract_own_name(place)
-        print("Top")
-        print(place)
-        file = call_wiki(place)
-        print(file)
-        test = test_empty_entry(file)
-        print(test)
-        if test is True:
-            print("TOP10")
-            text = "Oups page non trouvée"
-        else:
-            text = extract_text(file)
-    else:
-        text = extract_text(file)
+    print(file)
+    try:
+        a = file["query"]["pages"]
+        dict = {}
+        # to skip pg id number witch differs form page to page
+        for value in a.values():
+            dict = value
+            text = dict["extract"]
+        return text
+
+    except IndexError:
+        print("no page found XXXX")
+        text = "Verifie ton orthographe pour avoir une histoire ! En attendant je bloblote du cerveau!!"
+
     return text
+
+
+def some_words_about_v2(place):
+    """Use wikipedia geocoding"""
+
 
 
 

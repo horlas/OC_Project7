@@ -4,6 +4,7 @@
     <header id="header">
         <h1>GrandPy Papy Robot
         <p><img src="../static/img/grandfather.png" alt="logo" style="width:5%"></p>
+        <h2>Le robot qui blobotte!</h2>
         </h1>
         <p>Un jeu de questions réponse entre grand père et toi</p>
         <p>Demande lui où il habite ?...</p>
@@ -17,7 +18,7 @@
 
 
         <div id="text_area">
-            <div class="gp_mess col-lg-6">Bonjour petite! Où veux aller?</div>
+            <div class="gp_mess col-lg-6">Bonjour petite! Où veux tu aller?</div>
                 <!--get lat and lng in order to display the map-->
                 <div id="lat" style="display: none"></div>
                 <div id="lng" style="display: none"></div>
@@ -30,7 +31,7 @@
 <div class="container-fluid">
    <label for="target">As-tu une question pour Grandpy?</label>
    <div class="input-group">
-        <input id="target" type=text class="form-control" name="place">
+        <input id="target" type=text class="form-control" name="place" onclick='$("#target").val("");'>
         <span class="input-group-btn">
             <button id="submit" class="btn btn-primary" type="button" onclick="getMes();"><i class="far fa-smile"></i>  Dis moi GPy?</button>
         </span>

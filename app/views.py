@@ -18,10 +18,11 @@ app.config.from_object('config')
 
 @app.route('/_add_datas')
 def add_datas():
-    place = request.args.get("place", default="Résidence Foyer Montpellieret", type=str)
+    place = request.args.get("place", type=str)
     place = clean_entry(place)
+    place_gg = place_for_ggapp(place)
     # Geocoding an address
-    coord = geocoding(place)
+    coord = geocoding(place_gg)
     address = get_add(coord)
     text = some_words_about(place)
 

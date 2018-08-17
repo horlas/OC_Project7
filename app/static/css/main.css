@@ -19,6 +19,12 @@ footer{
   margin-top: 10px ;
 }
 
+#text_area {
+  padding-top: 20px;
+}
+
+
+
 .gp_mess{
   background-color: #cccccc;
   border: 2px solid black;
@@ -45,39 +51,6 @@ footer{
   margin-top: 20px;
   box-shadow: 5px 10px 10px 10px;
 }
-
-/*#grandpy {
-  background-color: ivory;
-  border: 2px solid black;
-
-  border-radius: 6px;
-
-  line-height: 40px;
-  padding-bottom: 50px;
-
-}*/
-
-/*#user {
-  background-color: ivory;
-  border: 2px solid black;
-
-  border-radius: 6px;
-
-  line-height: 40px;
-  padding-bottom: 50px;
-}*/
-
-
-
-
-
-
-
-.message {
-  background: beige;
-  border-radius: 10px;
-}
-
 
 
 .fa {
