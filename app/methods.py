@@ -11,6 +11,12 @@ from stop_words import get_stop_words
 
 gmaps = googlemaps.Client(key = GG_APP_ID)
 
+
+
+#test pytest
+def ma_fonction_a_tester(a, b):
+    return a + b
+
 #Api(s) google
 
 def geocoding(place):
@@ -58,12 +64,11 @@ def clean_entry(place):
     print(entry)
     return entry
 
-def place_for_ggapp(place_gg):
+def place_for_ggapp(place):
     '''in order to give a correct entry for google "word+word"'''
-    place = place_gg.split()
-    entry = "+".join(place)
-    print(entry)
-    return entry
+    pl_list = place.split()
+    place_gg= "+".join(pl_list)
+    return place_gg
 
 
 
@@ -124,11 +129,7 @@ def call_wiki(place):
     response = requests.get(url)
     file = response.json()
 
-    #format GPY answer
-    #b = random.choice(ANSWERSSTORY)
-    #res = "{}{}".format(b, file)
-    #if place == "Coq":
-    #    res = "{}{}".format(ANSWERWHERENOIDEA, file)
+
 
     return file
 
@@ -140,12 +141,18 @@ def some_words_about(place):
     print(file)
     try:
         a = file["query"]["pages"]
-        dict = {}
-        # to skip pg id number witch differs form page to page
+        # to skip pg id number witch differs from page to page
         for value in a.values():
-            dict = value
-            text = dict["extract"]
-        return text
+            extract = value["extract"]
+            # format GPY answer
+            b = random.choice(ANSWERSSTORY)
+            text = "{}{}".format(b, extract)
+
+            #add a mock answer when the page is not found
+            for k,v in a.items():
+                if k == "1815754": #the page id of "Coq"
+                    text = "{}\n{}".format(ANSWERWHERENOIDEA[0], extract)
+
 
     except IndexError:
         print("no page found XXXX")
@@ -156,6 +163,7 @@ def some_words_about(place):
 
 def some_words_about_v2(place):
     """Use wikipedia geocoding"""
+
 
 
 
