@@ -17,11 +17,11 @@ $(function() {
                                  $('<div class="gp_mess col-lg-6 col-lg-offset-1">').text(data.address).appendTo('#text_area');
                                  $('<div id="map-container" class="gp_mess col-lg-6 col-lg-offset-1" style="height:300px; border-radius:10px; margin: 5px; box-shadow: 5px 10px 10px 10px">').appendTo('#text_area');
                                  var map = initMap();
+                                 console.log(map)
                                  $("#map_container").val(map);
 
                                  $('<div class="gp_mess col-lg-6">').text(data.wikipedia).appendTo('#text_area');
 
-                                 //$("#map-container").val(map)
                 });
                 return false;}
                 );
@@ -39,8 +39,6 @@ function initMap() {
 
   var lngElt = document.getElementById('lng');
   var lon = Number(lngElt.textContent);
-  console.log(lng);
-
 
   // The map, centered at right place
     map = new google.maps.Map(document.getElementById('map-container'), {
@@ -60,9 +58,7 @@ function initMap() {
 
 function getMes(){
 var user_mes = $("#target").val();
-$('<div class="us_mess col-lg-7 col-lg-offset-5">').html(user_mes).appendTo('#text_area');
-//empty the input area
-//document.getElementById("target").value = "";
+$('<div class="us_mess col-lg-6 col-lg-offset-6">').html(user_mes).appendTo('#text_area');
 }
 
 

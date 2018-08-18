@@ -1,4 +1,4 @@
-from .methods import ma_fonction_a_tester, geocoding
+from .methods import *
 import pytest
 from config import *
 import requests

@@ -18,20 +18,33 @@ app.config.from_object('config')
 
 @app.route('/_add_datas')
 def add_datas():
-    place = request.args.get("place", type=str)
-    place = clean_entry(place)
-    place_gg = place_for_ggapp(place)
-    # Geocoding an address
-    coord = geocoding(place_gg)
-    address = get_add(coord)
-    text = some_words_about(place)
+    user_input = request.args.get("place", type=str)
+    place = ParsePlace(user_input)
+    place.clean_entry()
+
+
+
+    place.place_for_ggapp()
+
+    text = some_words_about(place.user_entry)
+
+
+
+    place.geocoding()
+    place.format_add()
+
+    print(place.lat, place.lng)
+
+
+
+
 
 
     return jsonify(#coordinates=coord,
-                   address=address,
-                   lat=coord[0],
-                   lng=coord[1],
-                   wikipedia=text)
+                   address = place.address,
+                   lat = place.lat,
+                   lng = place.lng,
+                   wikipedia = text)
 
 
 @app.route('/')

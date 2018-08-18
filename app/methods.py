@@ -19,28 +19,57 @@ def ma_fonction_a_tester(a, b):
 
 #Api(s) google
 
-def geocoding(place):
-    """get geographical coordinates: latitude"""
+class ParsePlace():
 
-    geocode_result = gmaps.geocode(place)
 
-    if geocode_result != []:
-        lat = geocode_result[0]["geometry"]["location"]["lat"]
-        lng = geocode_result[0]["geometry"]["location"]["lng"]
-    else:
+    def __init__(self, user_input):
+        self.user_entry = user_input
+        self.lat = None
+        self.lng = None
+        self.address = None
+
+    def clean_entry(self):
+        # clean user entry in order to push to API wikipedia
+
+        words = self.user_entry.split()
+        words_cleaned = [i for i in words if i not in STOPWORDS]
+        entry = " ".join(words_cleaned)
+        # remove the letter before the "'" character
+        r = r".[']"
+        self.user_entry = re.sub(r, "", entry)
+
+    def place_for_ggapp(self):
+        '''in order to give a correct entry for google "word+word"'''
+        pl_list = self.user_entry.split()
+        self.user_entry = "+".join(pl_list)
+
+    def geocoding(self):
+        """get geographical coordinates: latitude"""
+
+        geocode_result = gmaps.geocode(self.user_entry)
+
+        try:
+            self.lat = geocode_result[0]["geometry"]["location"]["lat"]
+            self.lng = geocode_result[0]["geometry"]["location"]["lng"]
+            self.address = geocode_result[0]["formatted_address"]
+        except IndexError:
         #to skip indexerror when a place is not find we put temporaly the coords of a nice place in France
-        lat = 45.954243
-        lng = 1.758278
-    coord = (lat, lng)
-    return coord
+            self.lat = 0
+            self.lng = 0
+            self.address ="No address found"
 
-def get_add(coord):
-    """get the place adress"""
-    reverse_geocode_result = gmaps.reverse_geocode(coord)
-    a = reverse_geocode_result[0]["formatted_address"]
-    b = random.choice(ANSWERSADD)
-    res = "{}{}".format(b,a)
-    return res # type: str
+
+    def format_add(self):
+        """get the place adress"""
+        if self.address == "No address found":
+            self.address = "Désolé je ne trouve pas d'adresse"
+        else:
+            b = random.choice(ANSWERSADD)
+            self.address = "{}{}".format(b,self.address)
+
+
+
+
 
 #Treatment of user entry
 ########################################################################
@@ -52,54 +81,40 @@ def get_add(coord):
 #    return place
 
 
-def clean_entry(place):
-    # clean user entry in order to push to API wikipedia
-
-    words = place.split()
-    words_cleaned = [i for i in words if i not in STOPWORDS]
-    entry = " ".join(words_cleaned)
-    #remove the letter before the "'" character
-    r =r".[']"
-    entry = re.sub(r,"",entry)
-    print(entry)
-    return entry
-
-def place_for_ggapp(place):
-    '''in order to give a correct entry for google "word+word"'''
-    pl_list = place.split()
-    place_gg= "+".join(pl_list)
-    return place_gg
 
 
 
 
 
-def test_empty_entry(file):
-    """to ensure that the page required is not empty"""
-    k = False
-    try:
-        a = file["query"]["pages"][0]
-        for i in a.keys():
-            if i == "missing":
-                k = a['missing']
-            elif i == "invalid":
-                k = a['invalid']
 
-    except KeyError:
-        print("no wikipedia page found")
-        k = True
-        return k
 
-    return k
 
-def extract_text(file):
-    """to extract content of wikipedia and treat it"""
-    text = file["query"]["pages"][0]["extract"]
-    bal_html = r"<.*?>"
-    century = r"&#160;"
-    text = re.sub(bal_html,r"",text)
-    text = re.sub(century,r"ème ",text)
-    return text
+#def test_empty_entry(file):
+#    """to ensure that the page required is not empty"""
+#    k = False
+#    try:
+#        a = file["query"]["pages"][0]
+#        for i in a.keys():
+#            if i == "missing":
+#                k = a['missing']
+#            elif i == "invalid":
+#                k = a['invalid']
+
+#    except KeyError:
+#        print("no wikipedia page found")
+#        k = True
+#        return k
+
+#    return k
+
+#def extract_text(file):
+#    """to extract content of wikipedia and treat it"""
+#    text = file["query"]["pages"][0]["extract"]
+#    bal_html = r"<.*?>"
+#    century = r"&#160;"
+#    text = re.sub(bal_html,r"",text)
+#    text = re.sub(century,r"ème ",text)
+#    return text
 
 
 #Api Wikipedia
