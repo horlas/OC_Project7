@@ -42,7 +42,7 @@ footer{
   font-size: 1.5em;
 }
 
-#map-container {
+.map-container {
   height: 300px;
   border-radius: 10px;
   margin: 10px;
