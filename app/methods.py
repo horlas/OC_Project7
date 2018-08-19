@@ -30,7 +30,6 @@ class ParsePlace():
 
     def clean_entry(self):
         # clean user entry in order to push to API wikipedia
-
         words = self.user_entry.split()
         words_cleaned = [i for i in words if i not in STOPWORDS]
         entry = " ".join(words_cleaned)
@@ -38,10 +37,12 @@ class ParsePlace():
         r = r".[']"
         self.user_entry = re.sub(r, "", entry)
 
+
     def place_for_ggapp(self):
         '''in order to give a correct entry for google "word+word"'''
         pl_list = self.user_entry.split()
         self.user_entry = "+".join(pl_list)
+
 
     def geocoding(self):
         """get geographical coordinates: latitude"""
@@ -64,57 +65,8 @@ class ParsePlace():
         if self.address == "No address found":
             self.address = "Désolé je ne trouve pas d'adresse"
         else:
-            b = random.choice(ANSWERSADD)
-            self.address = "{}{}".format(b,self.address)
-
-
-
-
-
-#Treatment of user entry
-########################################################################
-#def extract_own_name(place):
-#    """to extract only the own name"""
-#    c_name = r"\b[a-z]*"
-#    own_name = r"[A-Z][a-z]*"
-#    place = re.sub(c_name,"",place)
-#    return place
-
-
-
-
-
-
-
-
-
-
-#def test_empty_entry(file):
-#    """to ensure that the page required is not empty"""
-#    k = False
-#    try:
-#        a = file["query"]["pages"][0]
-#        for i in a.keys():
-#            if i == "missing":
-#                k = a['missing']
-#            elif i == "invalid":
-#                k = a['invalid']
-
-#    except KeyError:
-#        print("no wikipedia page found")
-#        k = True
-#        return k
-
-#    return k
-
-#def extract_text(file):
-#    """to extract content of wikipedia and treat it"""
-#    text = file["query"]["pages"][0]["extract"]
-#    bal_html = r"<.*?>"
-#    century = r"&#160;"
-#    text = re.sub(bal_html,r"",text)
-#    text = re.sub(century,r"ème ",text)
-#    return text
+            answer_beginning = random.choice(ANSWERSADD)
+            self.address = "{}{}".format(answer_beginning,self.address)
 
 
 #Api Wikipedia
@@ -130,6 +82,7 @@ def call_wiki(place):
     file = response.json()
     try:
         place = file["query"]["search"][0]["title"]
+        print(file)
     except IndexError:
         place = "Coq"
 
@@ -140,9 +93,9 @@ def call_wiki(place):
     url = "{}{}{}".format(url_begin, url_title, url_end)
 
     # call api
-    print(url)
     response = requests.get(url)
     file = response.json()
+
 
 
 
@@ -153,7 +106,6 @@ def call_wiki(place):
 def some_words_about(place):
     """Extract and treat wikipedia contents"""
     file = call_wiki(place)
-    print(file)
     try:
         a = file["query"]["pages"]
         # to skip pg id number witch differs from page to page
@@ -170,14 +122,11 @@ def some_words_about(place):
 
 
     except IndexError:
-        print("no page found XXXX")
         text = "Verifie ton orthographe pour avoir une histoire ! En attendant je bloblote du cerveau!!"
 
     return text
 
 
-def some_words_about_v2(place):
-    """Use wikipedia geocoding"""
 
 
 
