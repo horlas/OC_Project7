@@ -1,15 +1,17 @@
 from flask import Flask, render_template, request, url_for, jsonify
 from flask_bootstrap import Bootstrap
 from .methods import *
+from os import environ
 
 
 
 app = Flask(__name__)
 Bootstrap(app)
-app.config['DEBUG'] = True
+#app.config['DEBUG'] = True
 # Config options - Make sure you created a 'config.py' file.
-app.config.from_object('config')
-
+#app.config.from_object('config')
+#app.config.from_envvar('APP_SETTINGS')
+app.config['GG_APP_ID'] = environ.get('GG_APP_ID')
 
 
 # Initialize the extension
@@ -22,23 +24,11 @@ def add_datas():
     place = ParsePlace(user_input)
     place.clean_entry()
     place.place_for_ggapp()
-
     text = some_words_about(place.user_entry)
-
-
-
     place.geocoding()
     place.format_add()
 
-    print(place.lat, place.lng)
-
-
-
-
-
-
-    return jsonify(#coordinates=coord,
-                   address = place.address,
+    return jsonify(address = place.address,
                    lat = place.lat,
                    lng = place.lng,
                    wikipedia = text)
@@ -47,7 +37,6 @@ def add_datas():
 @app.route('/')
 @app.route('/home/')
 def index():
-
     return render_template("home.html")
 
 

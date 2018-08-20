@@ -3,13 +3,9 @@ import re
 import requests
 import random
 from .const import *
+from os import environ
 
-from config import *
-
-from stop_words import get_stop_words
-
-
-gmaps = googlemaps.Client(key = GG_APP_ID)
+gmaps = googlemaps.Client(key = environ.get('GG_APP_ID'))
 
 
 

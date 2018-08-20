@@ -1,9 +1,7 @@
-import googlemaps
 from app.methods import *
 
 from io import BytesIO
 import json
-import pytest
 from config import *
 
 

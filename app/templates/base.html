@@ -49,7 +49,9 @@
 
     <!--set the script root variable-->
 <script type=text/javascript>$SCRIPT_ROOT = {{ request.script_root|tojson|safe }}</script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key={{config['GG_APP_ID']}}"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key={{config['GG_APP_ID']}}"
+type="text/javascript"></script>
+
 <script async type="text/javascript" src="../static/js/javascript.js"></script>
 {% endblock %}
 
