@@ -51,21 +51,21 @@ def test_apigg_return(monkeypatch):
 
 
 
-# #test wikipedia with monkeypatch
-#
-# def test_apiwiki_return(monkeypatch):
-#     fake_wiki_response = {
-#             "titre_album": "Abacab" ,
-#             "groupe": "Genesis" ,
-#             "annee": 1981 ,
-#             "genre": "Rock"
-#         }
-#
-#     def mockreturn(one):
-#         return BytesIO(json.dumps(fake_wiki_response).encode())
-#
-#     monkeypatch.setattr(requests, 'get', mockreturn)
-#     assert call_wiki() == fake_wiki_response
+#test wikipedia with monkeypatch
+
+def test_apiwiki_return(monkeypatch):
+    fake_wiki_response = {
+            "titre_album": "Abacab" ,
+            "groupe": "Genesis" ,
+            "annee": 1981 ,
+            "genre": "Rock"
+        }
+
+    def mockreturn(one):
+        return BytesIO(json.dumps(fake_wiki_response).encode())
+
+    monkeypatch.setattr(requests, 'get', mockreturn)
+    assert call_wiki() == fake_wiki_response
 
 
 

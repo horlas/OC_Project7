@@ -10,6 +10,7 @@ Flask-Bootstrap==3.3.7.1
 Flask-GoogleMaps==0.2.6
 get==1.0.3
 googlemaps==3.0.2
+gunicorn==19.9.0
 idna==2.7
 itsdangerous==0.24
 Jinja2==2.10

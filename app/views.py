@@ -6,7 +6,7 @@ from .methods import *
 
 app = Flask(__name__)
 Bootstrap(app)
-
+app.config['DEBUG'] = True
 # Config options - Make sure you created a 'config.py' file.
 app.config.from_object('config')
 
@@ -21,9 +21,6 @@ def add_datas():
     user_input = request.args.get("place", type=str)
     place = ParsePlace(user_input)
     place.clean_entry()
-
-
-
     place.place_for_ggapp()
 
     text = some_words_about(place.user_entry)
