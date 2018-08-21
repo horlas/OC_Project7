@@ -14,10 +14,6 @@ Bootstrap(app)
 app.config['GG_APP_ID'] = environ.get('GG_APP_ID')
 
 
-# Initialize the extension
-
-
-
 @app.route('/_add_datas')
 def add_datas():
     user_input = request.args.get("place", type=str)

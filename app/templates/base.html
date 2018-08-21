@@ -35,9 +35,10 @@
     {{super()}}  {# do not forget to call super or Bootstrap's own stylesheets
                     will disappear! #}
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', next='/', filename='css/main.css')}}">
+<!--<link rel="stylesheet" type="text/css" href="{{url_for('static', next='/', filename='css/main.css')}}">-->
+<link rel="stylesheet" type="text/css" href="{{url_for('static', next='/', filename='css/bootstrap.css')}}">
 {% endblock %}
 
 
@@ -79,52 +80,52 @@ type="text/javascript"></script>
 
 
 
-<!DOCTYPE html>
-<html>
+<!--<!DOCTYPE html>-->
+<!--<html>-->
 
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Projet7</title>
-    <style>
-      /* Set the size of the div element witch contains the map */
-      #map {
-        height: 300px;  /* The height is 400 pixels */
-        width: 60%;  /* The width is the width of the web page */
-       }
-    </style>
-    <!--load jquery-->
+<!--<head>-->
+    <!--<meta http-equiv="content-type" content="text/html; charset=UTF-8">-->
+    <!--<title>Projet7</title>-->
+    <!--<style>-->
+      <!--/* Set the size of the div element witch contains the map */-->
+      <!--#map {-->
+        <!--height: 300px;  /* The height is 400 pixels */-->
+        <!--width: 60%;  /* The width is the width of the web page */-->
+       <!--}-->
+    <!--</style>-->
+    <!--&lt;!&ndash;load jquery&ndash;&gt;-->
 
-    <script src="//code.jquery.com/jquery-3.3.1.js"></script>
-    <!--set the script root variable-->
-    <script type=text/javascript>
-        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }}
-    </script>
-
-
-
-</head>
-
-<body>
-        <header>
-            <img src="../static/img/images.png" alt="Logo en attente" class="logo" height = 150px width= auto style= "float:left">
-            <h1 style="line-height: 150px">Prototype</h1>
-        </header>
+    <!--<script src="//code.jquery.com/jquery-3.3.1.js"></script>-->
+    <!--&lt;!&ndash;set the script root variable&ndash;&gt;-->
+    <!--<script type=text/javascript>-->
+        <!--$SCRIPT_ROOT = {{ request.script_root|tojson|safe }}-->
+    <!--</script>-->
 
 
 
-        {% block content %}{% endblock %}
+<!--</head>-->
+
+<!--<body>-->
+        <!--<header>-->
+            <!--<img src="../static/img/images.png" alt="Logo en attente" class="logo" height = 150px width= auto style= "float:left">-->
+            <!--<h1 style="line-height: 150px">Prototype</h1>-->
+        <!--</header>-->
+
+
+
+        <!--{% block content %}{% endblock %}-->
 
 
 
 
-    <footer style = "padding-top: 50px; font-size : 1.7em" >
-    <p style = "display:inline">Aurelia Gourbère</p>
-    <a href="https://github.com/horlas/OC_Project7" target="_blank" style = display:inline>Github</a>
-    </footer>
-    <!-- initialyse googlemap app-->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{config['GG_APP_ID']}}"></script>
-    <script async type="text/javascript" src="../static/js/javascript.js"></script>
+    <!--<footer style = "padding-top: 50px; font-size : 1.7em" >-->
+    <!--<p style = "display:inline">Aurelia Gourbère</p>-->
+    <!--<a href="https://github.com/horlas/OC_Project7" target="_blank" style = display:inline>Github</a>-->
+    <!--</footer>-->
+    <!--&lt;!&ndash; initialyse googlemap app&ndash;&gt;-->
+    <!--<script async defer src="https://maps.googleapis.com/maps/api/js?key={{config['GG_APP_ID']}}"></script>-->
+    <!--<script async type="text/javascript" src="../static/js/javascript.js"></script>-->
 
 
-</body>
-</html>
+<!--</body>-->
+<!--</html>-->

@@ -1,19 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container-fluid">
-    <header id="header">
-        <h1>GrandPy Papy Robot
-        <p><img src="../static/img/grandfather.png" alt="logo" style="width:5%"></p>
-        <h2>Le robot qui blobotte!</h2>
-        </h1>
-        <p>Un jeu de questions réponse entre grand père et toi</p>
-        <p>Demande lui où il habite ?...</p>
-    </header>
+
+
+
+<header id="header">
+    <h1>GrandPy Papy Robot
+    <p><img src="../static/img/grandfather.png" alt="logo" style="width:5%"></p>
+    <h2>Le robot qui blobotte!</h2>
+    </h1>
+    <p>Un jeu de questions réponse entre grand père et toi</p>
+    <p>Demande lui où il habite ?...</p>
+</header>
+
+
+<div class="container-fluid" style="background-color:#3b3734">
+   <label for="target">As-tu une question pour Grandpy?</label>
+   <div class="input-group">
+        <input id="target" type=text class="form-control" name="place" onclick='$("#target").val("");'>
+        <span class="input-group-btn">
+            <button id="submit" class="btn btn-primary" type="button" onclick="getMes();"><i class="far fa-smile"></i>  Dis moi GPy?</button>
+        </span>
+   </div>
 </div>
 
-
 <div class="container-fluid">
-    <div class="row" style="background: #6f8183">
+    <div class="row" style="background: #fffdf9">
 
 
 
@@ -28,36 +39,54 @@
 
     </div>
 </div>
-<div class="container-fluid">
-   <label for="target">As-tu une question pour Grandpy?</label>
-   <div class="input-group">
-        <input id="target" type=text class="form-control" name="place" onclick='$("#target").val("");'>
-        <span class="input-group-btn">
-            <button id="submit" class="btn btn-primary" type="button" onclick="getMes();"><i class="far fa-smile"></i>  Dis moi GPy?</button>
-        </span>
-   </div>
-</div>
 
 
-<div class="container-fluid">
-    <footer id="footer" class ="row text-center">
-         <a href="#header" class="btn btn-info btn-sm">
-            <span class="glyphicon glyphicon-chevron-up"></span>Up</a>
-
-         <h4>2018 Aurélia Gourbère
-            <a href="https://github.com/horlas/OC_Project7" class="btn btn-social-icon btn-github">
-            <span class="fa fa-github "></span></a>
-         </h4>
-    </footer>
-
-</div>
+<!--<div class="container-fluid">-->
+   <!--<label for="target">As-tu une question pour Grandpy?</label>-->
+   <!--<div class="input-group">-->
+        <!--<input id="target" type=text class="form-control" name="place" onclick='$("#target").val("");'>-->
+        <!--<span class="input-group-btn">-->
+            <!--<button id="submit" class="btn btn-primary" type="button" onclick="getMes();"><i class="far fa-smile"></i>  Dis moi GPy?</button>-->
+        <!--</span>-->
+   <!--</div>-->
+<!--</div>-->
 
 
 
+<footer id="footer" class="page-footer font-small blue pt-4">
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+
+      <!-- Grid row -->
+      <div class="row">
+
+         <!-- Content -->
+          <a href="#header" class="btn btn-info btn-sm">
+                    <span class="glyphicon glyphicon-chevron-up"></span>Up</a>
+          <h4 class="text-uppercase">2018 Aurélia Gourbère
+
+                <a href="https://github.com/horlas/OC_Project7" class="btn btn-social-icon btn-github">
+                <span class="fa fa-github "></span>
+                </a>
+
+          </h4>
 
 
+                </div>
+            <!-- Grid row -->
 
         </div>
+        <!-- Footer Links -->
+
+
+</footer>
+ <!-- Footer -->
+
+
+
+
+
 {% endblock %}
 
 

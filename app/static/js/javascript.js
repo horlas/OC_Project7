@@ -48,12 +48,12 @@ function initMap() {
     });
     return map;
 
-}
+};
 
 function getMes(){
 var user_mes = $("#target").val();
 $('<div class="us_mess col-lg-6 col-lg-offset-6">').html(user_mes).appendTo('#text_area');
-}
+};
 
 
 //to activate Enter key
@@ -64,5 +64,38 @@ input.addEventListener("keyup", function(event) {
         document.getElementById("submit").click();
     }
 });
+
+
+
+
+
+
+
+
+
+////to get the footer at the end of the page ///
+jQuery(document).ready(function($) {
+    /**
+     * Set footer always on the bottom of the page
+     */
+    function footerAlwayInBottom(footerSelector) {
+        var docHeight = $(window).height();
+        var footerTop = footerSelector.position().top + footerSelector.height();
+        if (footerTop < docHeight) {
+            footerSelector.css("margin-top", (docHeight - footerTop) + "px");
+        }
+    }
+    // Apply when page is loading
+    footerAlwayInBottom($("#footer"));
+    // Apply when page is resizing
+    $(window).resize(function() {
+        footerAlwayInBottom($("#footer"));
+    });
+});
+
+
+
+
+
 
 
