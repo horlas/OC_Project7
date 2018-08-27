@@ -17,15 +17,15 @@ ANSWERSADD = [
 
 ANSWERSSTORY = [
 
-    "Et ai je déjà raconté cette histoire?:\n          ",
+    "Et t'ai je déjà raconté cette histoire?:\n          ",
     "Je me souviens que ....\n        ",
     "Si tu as cinq minutes , je te raconte une petite histoire!:\n        ",
     "De mon temps ....\n",
-    "Je profite d'avoir un peu de compagnie pour te prendre la tete avec une histoire à deux balles!\n      "
+    "Je profite d'avoir un peu de compagnie pour papoter!\n      "
 ]
 
 ANSWERWHERENOIDEA = [
-    "Fais attention à l'orthographe de ta recherche. Mais en attendant je peux te parler de mon animal préfèré: le coq. "
+    "Fais attention à l'orthographe de ta recherche. Mais en attendant je peux te parler de ma première voiture: la 2CV. "
 
 ]
 

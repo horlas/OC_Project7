@@ -3,14 +3,10 @@ from flask_bootstrap import Bootstrap
 from .methods import *
 from os import environ
 
-
-
 app = Flask(__name__)
 Bootstrap(app)
 #app.config['DEBUG'] = True
 # Config options - Make sure you created a 'config.py' file.
-#app.config.from_object('config')
-#app.config.from_envvar('APP_SETTINGS')
 app.config['GG_APP_ID'] = environ.get('GG_APP_ID')
 
 

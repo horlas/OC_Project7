@@ -10,7 +10,7 @@ $(function() {
                     //data
                     {place: $('input[name="place"]').val()},
                     //func
-                    function (data) {//$("#coord").text(data.coordinates);
+                    function (data) {
                                  $("#lat").text(data.lat);
                                  $("#lng").text(data.lng);
                                  $('<div class="gp_mess col-lg-6 col-lg-offset-1">').text(data.address).appendTo('#text_area');
@@ -18,15 +18,12 @@ $(function() {
                                  var map = initMap();
                                  $('text_area:last-child').val(map);
                                  $('<div class="gp_mess col-lg-6">').text(data.wikipedia).appendTo('#text_area');
-
                 });
                 return false;}
                 );
             });
 
 // Initialize and add the map
-
-
 function initMap() {
 
   // The location of place

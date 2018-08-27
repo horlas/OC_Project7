@@ -78,9 +78,8 @@ def call_wiki(place):
     file = response.json()
     try:
         place = file["query"]["search"][0]["title"]
-        print(file)
     except IndexError:
-        place = "Coq"
+        place = "Citroën 2 CV"  # in case of invalid user input we put a default answer
 
     # format url
     url_begin = "https://fr.wikipedia.org/w/api.php?action=query&titles="
@@ -113,12 +112,12 @@ def some_words_about(place):
 
             #add a mock answer when the page is not found
             for k,v in a.items():
-                if k == "1815754": #the page id of "Coq"
+                if k == "85296": #the page id of "2CV"
                     text = "{}\n{}".format(ANSWERWHERENOIDEA[0], extract)
 
 
     except IndexError:
-        text = "Verifie ton orthographe pour avoir une histoire ! En attendant je bloblote du cerveau!!"
+        text = "Verifie ton orthographe pour avoir une histoire ! En attendant je parle dans ma barbe !!!"
 
     return text
 

@@ -2,14 +2,15 @@ from app.methods import *
 
 from io import BytesIO
 import json
-from config import *
-
+from os import environ
+#from config import *
+GG_APP_ID=environ.get('GG_APP_ID')
 
 ###test pytest###
 def test_function():
     assert ma_fonction_a_tester(1, 1) == 2
 
-##### test API enable####
+#### test API enable####
 
 def call_ggeocode():
     #build url
@@ -50,17 +51,19 @@ def test_apigg_return(monkeypatch):
 
 
 #test wikipedia with monkeypatch
-
-def test_apiwiki_return(monkeypatch):
-    fake_wiki_response = {
+def test_call_wiki(monkeypatch):
+    """to test wikipedia without API request"""
+    fake_wiki_response =[
+        {
             "titre_album": "Abacab" ,
             "groupe": "Genesis" ,
             "annee": 1981 ,
             "genre": "Rock"
-        }
+        }]
 
-    def mockreturn(one):
-        return BytesIO(json.dumps(fake_wiki_response).encode())
+
+    def mockreturn(request):
+        return fake_wiki_response
 
     monkeypatch.setattr(requests, 'get', mockreturn)
     assert call_wiki() == fake_wiki_response
@@ -68,7 +71,6 @@ def test_apiwiki_return(monkeypatch):
 
 
 ####### Test Class ParsePlace ######
-#
 class TestParsePlace():
 
     place = ParsePlace("je veux aller à la piscine Antigone")
@@ -107,13 +109,10 @@ def test_some_word_about(monkeypatch):
         return b
 
     monkeypatch.setattr(random,'choice', mockreturn)
-    text = some_words_about("Montpellier")
-    assert text == "Ceci est un test: Montpellier (prononcé [mɔ̃.pə.lje]  ou [mɔ̃.pɛ.lje])" \
-                   " est une commune française, préfecture du département de l’Hérault," \
-                   " en région Occitanie. Montpellier se situe dans le sud de la France," \
-                   " sur un grand axe de communication joignant l'Espagne à l'ouest," \
-                   " à l'Italie à l'est. Proche de la mer Méditerranée (7,1 km)," \
-                   " cette ville a comme voisines Béziers à 69 km au sud-ouest et" \
-                   " Nîmes à 52 km au nord-est."
-
+    text = some_words_about("ganges")
+    print(text)
+    assert text == "Ceci est un test: Ganges (en occitan Gange) est une commune française "\
+            "située dans le département de l'Hérault, en région Occitanie. "\
+            "Chef-lieu du canton de Ganges, la commune est située au confluent de l’Hérault "\
+            "avec le Rieutord. Ses habitants sont appelés les Gangeois."
 

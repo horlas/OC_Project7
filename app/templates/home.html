@@ -13,15 +13,7 @@
 </header>
 
 
-<div class="container-fluid" style="background-color:#3b3734">
-   <label for="target">As-tu une question pour Grandpy?</label>
-   <div class="input-group">
-        <input id="target" type=text class="form-control" name="place" onclick='$("#target").val("");'>
-        <span class="input-group-btn">
-            <button id="submit" class="btn btn-primary" type="button" onclick="getMes();"><i class="far fa-smile"></i>  Dis moi GPy?</button>
-        </span>
-   </div>
-</div>
+
 
 <div class="container-fluid">
     <div class="row" style="background: #fffdf9">
@@ -40,27 +32,22 @@
     </div>
 </div>
 
+<div class="container-fluid position-sticky" style="background-color:#3b3734">
+   <label for="target">As-tu une question pour Grandpy?</label>
+   <div class="input-group">
+        <input id="target" type=text class="form-control" name="place" onclick='$("#target").val("");'>
+        <span class="input-group-btn">
+            <button id="submit" class="btn btn-primary" type="button" onclick="getMes();"><i class="far fa-smile"></i>  Dis moi GPy?</button>
+        </span>
+   </div>
+</div>
 
-<!--<div class="container-fluid">-->
-   <!--<label for="target">As-tu une question pour Grandpy?</label>-->
-   <!--<div class="input-group">-->
-        <!--<input id="target" type=text class="form-control" name="place" onclick='$("#target").val("");'>-->
-        <!--<span class="input-group-btn">-->
-            <!--<button id="submit" class="btn btn-primary" type="button" onclick="getMes();"><i class="far fa-smile"></i>  Dis moi GPy?</button>-->
-        <!--</span>-->
-   <!--</div>-->
-<!--</div>-->
+<div class="progress">
+  <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
 
-
-
-<footer id="footer" class="page-footer font-small blue pt-4">
-
-    <!-- Footer Links -->
-    <div class="container-fluid text-center text-md-left">
-
-      <!-- Grid row -->
-      <div class="row">
-
+<footer class="font-small fixed-bottom">
+    <div class=" text-center py-3">
          <!-- Content -->
           <a href="#header" class="btn btn-info btn-sm">
                     <span class="glyphicon glyphicon-chevron-up"></span>Up</a>
@@ -71,15 +58,7 @@
                 </a>
 
           </h4>
-
-
-                </div>
-            <!-- Grid row -->
-
-        </div>
-        <!-- Footer Links -->
-
-
+    </div>
 </footer>
  <!-- Footer -->
 
