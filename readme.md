@@ -1,5 +1,5 @@
 #GrandPy Robot 
-***
+
 
 Grandpy Robot est un robot qui invite l'utilisateur à demander l'adresse d'un endroit où il aimerait aller. Suite à la demande , il le  renseigne en lui renvoyant l'adresse  et la carte du lieu demandé ,et une brève histoire en rapport avec cet endroit.
 
@@ -77,7 +77,7 @@ Ouvrez l'application web en local : 127.0.0.1:5000.
 Enjoy !!!
 
 
-***
+
 
 #GrandPy Robot
 
