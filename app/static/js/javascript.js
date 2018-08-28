@@ -78,9 +78,10 @@ function addUserMes() {
                                                                                      '<hr class="w-100">',
                                                                                      '<p class="us_mess mb-0"></p>'
                                                                                     );
+    // language=HTML
     var $zone = $('<li class="d-flex justify-content-between mb-4"></li>').append(
         $divchatbody,
-        '<img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5" alt="avatar" class="avatar rounded-circle mr-0 ml-3 z-depth-1">'
+        '<img src="../static/img/photoessaiuser.jpg" alt="avatar" class="avatar rounded-circle mr-0 ml-3 z-depth-1">'
     );
 
     $("#message").append($zone)
@@ -95,7 +96,7 @@ function addGPyMess(message){
                                                                                      $gpyMess
 );
     var $zone = $('<li class="d-flex justify-content-between mb-4"></li>').append(
-        '<img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6" alt="avatar" class="avatar rounded-circle mr-2 ml-lg-3 ml-0 z-depth-1">',
+        '<img src="../static/img/photoessai2gp.jpg" alt="avatar" class="avatar rounded-circle mr-2 ml-lg-3 ml-0 z-depth-1">',
         $divchatbody
     );
 
@@ -113,32 +114,25 @@ input.addEventListener("keyup", function(event) {
 });
 
 
-
-
-
-
-
-
-
-////to get the footer at the end of the page ///
-jQuery(document).ready(function($) {
-    /**
-     * Set footer always on the bottom of the page
-     */
-    function footerAlwayInBottom(footerSelector) {
-        var docHeight = $(window).height();
-        var footerTop = footerSelector.position().top + footerSelector.height();
-        if (footerTop < docHeight) {
-            footerSelector.css("margin-top", (docHeight - footerTop) + "px");
-        }
-    }
-    // Apply when page is loading
-    footerAlwayInBottom($("#footer"));
-    // Apply when page is resizing
-    $(window).resize(function() {
-        footerAlwayInBottom($("#footer"));
-    });
-});
+// ////to get the footer at the end of the page ///
+// jQuery(document).ready(function($) {
+//     /**
+//      * Set footer always on the bottom of the page
+//      */
+//     function footerAlwayInBottom(footerSelector) {
+//         var docHeight = $(window).height();
+//         var footerTop = footerSelector.position().top + footerSelector.height();
+//         if (footerTop < docHeight) {
+//             footerSelector.css("margin-top", (docHeight - footerTop) + "px");
+//         }
+//     }
+//     // Apply when page is loading
+//     footerAlwayInBottom($("#footer"));
+//     // Apply when page is resizing
+//     $(window).resize(function() {
+//         footerAlwayInBottom($("#footer"));
+//     });
+// });
 
 
 
