@@ -69,31 +69,31 @@ label{
   height: 500px;
 }
 
-.gp_mess{
-  background-color: #cccccc;
-  border: 2px solid black;
-  border-radius: 6px;
-  line-height: 1.9;
-  padding-bottom: 5px;
-  margin: 5px;
-  font-size: 1.5em;
-}
+/*.gp_mess{*/
+  /*background-color: #cccccc;*/
+  /*border: 2px solid black;*/
+  /*border-radius: 6px;*/
+  /*line-height: 1.9;*/
+  /*padding-bottom: 5px;*/
+  /*margin: 5px;*/
+  /*font-size: 1.5em;*/
+/*}*/
 
-.us_mess{
-  background-color: #a6d2db;
-  border: 2px solid black;
-  border-radius: 6px;
-  line-height: 1.9;
-  padding-bottom: 5px;
-  margin-bottom: 5px;
-  font-size: 1.5em;
-}
+/*.us_mess{*/
+  /*background-color: #a6d2db;*/
+  /*border: 2px solid black;*/
+  /*border-radius: 6px;*/
+  /*line-height: 1.9;*/
+  /*padding-bottom: 5px;*/
+  /*margin-bottom: 5px;*/
+  /*font-size: 1.5em;*/
+/*}*/
 
 .map-container {
   height: 300px;
   border-radius: 10px;
   margin: 10px;
-  box-shadow: 5px 10px 10px 10px;
+  /*box-shadow: 5px 10px 10px 10px;*/
 }
 
 .fa {

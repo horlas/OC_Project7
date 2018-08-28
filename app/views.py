@@ -13,6 +13,7 @@ app.config['GG_APP_ID'] = environ.get('GG_APP_ID')
 @app.route('/_add_datas')
 def add_datas():
     user_input = request.args.get("place", type=str)
+    print(user_input)
     place = ParsePlace(user_input)
     place.clean_entry()
     place.place_for_ggapp()
