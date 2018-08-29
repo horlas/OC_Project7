@@ -1,4 +1,3 @@
-
 //Load JSON-encoded data from the server using a GET HTTP request.
 //call root /_add_datas
 $(function() {

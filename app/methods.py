@@ -24,8 +24,16 @@ class ParsePlace():
         self.lng = None
         self.address = None
 
+    def empty_input(self):
+        """return some date when user tapes nothing"""
+        self.lat = 45.950007
+        self.long = 1.756338
+        self.address = "{}{}".format(ANSWERWHENNOTHING[0], "21 Route de la Cascade, 23400 Bourganeuf")
+
+
+
     def clean_entry(self):
-        # clean user entry in order to push to API wikipedia
+        '''clean user entry in order to push to API wikipedia'''
         words = self.user_entry.split()
         words_cleaned = [i for i in words if i not in STOPWORDS]
         entry = " ".join(words_cleaned)
@@ -63,6 +71,8 @@ class ParsePlace():
         else:
             answer_beginning = random.choice(ANSWERSADD)
             self.address = "{}{}".format(answer_beginning,self.address)
+
+
 
 
 #Api Wikipedia
@@ -122,6 +132,18 @@ def some_words_about(place):
 
 
 
+def some_words_about_whith_nothing():
+    """when the user tape nothing """
+    response = requests.get('https://fr.wikipedia.org/w/api.php?action=query&titles=P%C3%A9tanque&prop=extracts&exsentences=3&format=json&explaintext')
+    file = response.json()
+    a = file["query"]["pages"]
+    # to skip pg id number witch differs from page to page
+    for value in a.values():
+        extract = value["extract"]
+        # format GPY answer
+        b = ANSWERWHENNOPLACE[0]
+        text = "{}{}".format(b, extract)
+    return text
 
 
 

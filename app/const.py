@@ -29,7 +29,8 @@ ANSWERWHERENOIDEA = [
 
 ]
 
-
+ANSWERWHENNOTHING = ["Ben alors ! Tu ne  veux pas parler ? Je te donne mon adresse alors ! " ]
+ANSWERWHENNOPLACE = ["Ben alors ! Si tu ne veux pas parler veux tu que je te parle du jeu que je prefère ! "]
 
 
 #STOP_WORDS
