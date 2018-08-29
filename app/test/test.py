@@ -20,7 +20,7 @@ def call_ggeocode():
     rep = requests.get(url)
     return rep.status_code
 
-def call_wiki():
+def call_mediawiki():
     url = "https://en.wikipedia.org/w/api.php?action=query&titles=Main%20Page&prop=revisions&rvprop=content&format=json&formatversion=2"
     rep = requests.get(url)
     return rep.status_code
@@ -29,7 +29,7 @@ def test_call_ggeocode():
     assert call_ggeocode() == 200
 
 def test_call_mediawiki():
-    assert call_wiki() == 200
+    assert call_mediawiki() == 200
 
 
 #test geocoding with monkeypatch
@@ -51,22 +51,33 @@ def test_apigg_return(monkeypatch):
 
 
 #test wikipedia with monkeypatch
-def test_call_wiki(monkeypatch):
-    """to test wikipedia without API request"""
-    fake_wiki_response =[
+class RequestResponse:
+    def json(self):
+        fake_json = [
         {
             "titre_album": "Abacab" ,
             "groupe": "Genesis" ,
             "annee": 1981 ,
             "genre": "Rock"
         }]
+        return fake_json
 
+def mafonction(url):
+    return RequestResponse()
 
-    def mockreturn(request):
-        return fake_wiki_response
+def test_call_wiki(monkeypatch):
+    """to test wikipedia without API request"""
+    place = "Montpellier"
+    monkeypatch.setattr('app.methods.requests.get', mafonction)
 
-    monkeypatch.setattr(requests, 'get', mockreturn)
-    assert call_wiki() == fake_wiki_response
+    file = call_wiki_found_page(place)
+    assert file == [
+        {
+            "titre_album": "Abacab" ,
+            "groupe": "Genesis" ,
+            "annee": 1981 ,
+            "genre": "Rock"
+        }]
 
 
 

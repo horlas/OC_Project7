@@ -59,8 +59,8 @@
 
                     </ul>
                 </div>
-                 <!--input area user-->
-                    <div class="chat-message">
+                <!--user input area-->
+                    <div id="monancre" class="chat-message">
                     <ul id="form" class="list-unstyled chat">
                         <li class="white">
                             <label for="target">As-tu une question pour Grandpy?</label>
@@ -68,12 +68,15 @@
                                 <input name="place" class="form-control pl-2 my-0" id="target" rows="3" placeholder="Type your message here..."  onclick='$("#target").val("");'>
                             </div>
                         </li>
-                        <button id="submit" type="button" class="btn btn-info btn-rounded btn-sm waves-effect waves-light float-right" onclick="getMes();">Dis moi GPy !</button>
+                        <button id="submit" type="button"  class="btn btn-info btn-lg">Dis moi GPy !</button>
 
-                         <!--input area user-->
                     </ul>
-
                     </div>
+                <!--user input area-->
+                <!-- Progress bar -->
+                <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+                </div>
 
             </div>
             <!-- Grid column -->
@@ -86,46 +89,6 @@
 
     </div>
 </div>
-
-
-
-
-
-
-<!--essai zone de tchat-->
-<!--<div class="container-fluid">-->
-    <!--<div class="row" style="background: #fffdf9">-->
-
-
-
-        <!--<div id="text_area">-->
-            <!--<div class="gp_mess col-lg-6">Bonjour petite! Où veux tu aller?</div>-->
-                <!--&lt;!&ndash;get lat and lng in order to display the map&ndash;&gt;-->
-                <!--<div id="lat" style="display: none"></div>-->
-                <!--<div id="lng" style="display: none"></div>-->
-
-        <!--</div>-->
-
-
-    <!--</div>-->
-<!--</div>-->
-
-<!--<div class="container-fluid" style="background-color:#3b3734">-->
-   <!--<label for="target">As-tu une question pour Grandpy?</label>-->
-   <!--<div class="input-group">-->
-        <!--<input id="target" type=text class="form-control" name="place" onclick='$("#target").val("");'>-->
-        <!--<span class="input-group-btn">-->
-            <!--<button id="submit" class="btn btn-primary" type="button" onclick="getMes();"><i class="far fa-smile"></i>  Dis moi GPy?</button>-->
-        <!--</span>-->
-   <!--</div>-->
-<!--</div>-->
-
-<!--<div class="progress">-->
-  <!--<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>-->
-<!--</div>-->
-
-
-
 
 <footer class="font-small ">
     <div class=" text-center py-3">

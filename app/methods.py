@@ -66,43 +66,42 @@ class ParsePlace():
 
 
 #Api Wikipedia
-def call_wiki(place):
+def call_wiki_main_page(place):
     """Call Api Wikipedia"""
     #first call all main page
     url_begin = "https://fr.wikipedia.org/w/api.php?action=query&format=json&list=search&utf8=&srsearch="
     url_title = place
     url = "{}{}".format(url_begin, url_title)
-    print(url)
     #and we took the first occurrence
     response = requests.get(url)
     file = response.json()
     try:
-        place = file["query"]["search"][0]["title"]
+        title = file["query"]["search"][0]["title"]
     except IndexError:
-        place = "Citroën 2 CV"  # in case of invalid user input we put a default answer
+        title = "Citroën 2 CV"  # in case of invalid user input we put a default answer
+    return title
 
+def call_wiki_found_page(title):
     # format url
     url_begin = "https://fr.wikipedia.org/w/api.php?action=query&titles="
-    url_title = place
+    url_title = title
     url_end = "&prop=extracts&exsentences=3&format=json&explaintext"
     url = "{}{}{}".format(url_begin, url_title, url_end)
 
     # call api
     response = requests.get(url)
     file = response.json()
-
-
-
-
     return file
 
 
 
 def some_words_about(place):
     """Extract and treat wikipedia contents"""
-    file = call_wiki(place)
+    page_title = call_wiki_main_page(place)
+    article = call_wiki_found_page(page_title)
+
     try:
-        a = file["query"]["pages"]
+        a = article["query"]["pages"]
         # to skip pg id number witch differs from page to page
         for value in a.values():
             extract = value["extract"]

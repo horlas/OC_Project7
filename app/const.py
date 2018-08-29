@@ -7,21 +7,21 @@ from stop_words import get_stop_words
 ANSWERSADD = [
 
     "Biensur mon poussin, la voici :    ",
-    "Mais rien ne me fait plus plaisir que de te la donner:   ",
-    "Comment puis je à mon age connaitre encore tout ça ! La voici:    ",
-    "Oh regarde! La jolie adresse!:   ",
-    "Tu veux pas aller voir ta grand-mère ?:    "
+    "Mais rien ne me fait plus plaisir que de te la donner :   ",
+    "Comment puis je à mon age connaitre encore tout ça ! La voici :    ",
+    "Oh regarde! La jolie adresse ! :   ",
+    "Tu veux pas aller voir ta grand-mère ? :    "
 
 ]
 
 
 ANSWERSSTORY = [
 
-    "Et t'ai je déjà raconté cette histoire?:\n          ",
+    "Et t'ai je déjà raconté cette histoire ? :\n          ",
     "Je me souviens que ....\n        ",
-    "Si tu as cinq minutes , je te raconte une petite histoire!:\n        ",
+    "Si tu as cinq minutes , je te raconte une petite histoire ! :\n        ",
     "De mon temps ....\n",
-    "Je profite d'avoir un peu de compagnie pour papoter!\n      "
+    "Je profite d'avoir un peu de compagnie pour papoter !\n      "
 ]
 
 ANSWERWHERENOIDEA = [

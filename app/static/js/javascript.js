@@ -2,23 +2,42 @@
 //Load JSON-encoded data from the server using a GET HTTP request.
 //call root /_add_datas
 $(function() {
-            $('#submit').bind('click', function() {
-                //$.getJSON(--url, --data, --func)
-                $.getJSON(
-                    //url
-                    $SCRIPT_ROOT + '/_add_datas',
-                    //data
-                    {place: $('input[name="place"]').val()},
-                    //func
-                    function (data) {
-                                 $("#lat").text(data.lat);
-                                 $("#lng").text(data.lng);
-                                 addGPyMess(data.address);
+            $('#submit').on('click', function() {
+                //display "GrandPy thinks"
+                $("#monancre").hide();
+                $(".progress").show();
+                progressBar();
 
-                                 mapZone();
-                                 initMap();
-                                 addGPyMess(data.wikipedia);
-                });
+                setTimeout(function() {
+
+                        //display user input
+                        getMes();
+                        console.log("Top");
+                        //$.getJSON(--url, --data, --func)
+                        $.getJSON(
+                            //url
+                            $SCRIPT_ROOT + '/_add_datas',
+                            //data
+                            {place: $('input[name="place"]').val()},
+                            //func
+                            function (data) {
+                                $("#lat").text(data.lat);
+                                $("#lng").text(data.lng);
+                                addGPyMess(data.address);
+
+                                mapZone();
+                                initMap();
+                                addGPyMess(data.wikipedia);
+                                //initialyse progress bar and show input area
+                                progressBarnull();
+                                $("#monancre").show();
+                                $(".progress").hide();
+                                //go to the bottom
+                                $('html,body').animate({scrollTop: $('#monancre').offset().top}, "slow");
+
+                            })
+                    }, 4000);
+
                 return false;}
                 );
             });
@@ -47,17 +66,9 @@ function initMap() {
 }
 
 function mapZone() {
-    console.log("yes");
-    // var $divchatbody = $('<div id="MAP" class="map-container">Coucou</div>');
-    // var $zone = $('<li class="d-flex justify-content-between mb-4"></li>').append($divchatbody);
     var $zone = $('<div  class="map-container d-flex justify-content-between mb-4" ></div>');
     $("#message").append($zone)
 }
-
-
-
-
-
 
 
 //catch user input onclick
@@ -114,29 +125,25 @@ input.addEventListener("keyup", function(event) {
 });
 
 
-// ////to get the footer at the end of the page ///
-// jQuery(document).ready(function($) {
-//     /**
-//      * Set footer always on the bottom of the page
-//      */
-//     function footerAlwayInBottom(footerSelector) {
-//         var docHeight = $(window).height();
-//         var footerTop = footerSelector.position().top + footerSelector.height();
-//         if (footerTop < docHeight) {
-//             footerSelector.css("margin-top", (docHeight - footerTop) + "px");
-//         }
-//     }
-//     // Apply when page is loading
-//     footerAlwayInBottom($("#footer"));
-//     // Apply when page is resizing
-//     $(window).resize(function() {
-//         footerAlwayInBottom($("#footer"));
-//     });
-// });
+
+function progressBar() {
+    function timer(n) {
+        $(".progress-bar").css("width", n + "%");
+        if(n < 100) {
+                setTimeout(function() {
+                    timer(n + 10);
+            }, 200);
+        }
+    }
+
+    timer(0);
+}
 
 
+function progressBarnull() {
+    console.log("top");
 
+      $('.progress-bar').css("width", "0%")
 
-
-
+}
 
