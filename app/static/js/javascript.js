@@ -36,6 +36,12 @@ $(function() {
                 );
             });
 
+//Initialize the dic whitch contains the map
+function mapZone() {
+    var $zone = $('<div  class="map-container d-flex justify-content-between mb-4" ></div>');
+    $("#message").append($zone)
+}
+
 // Initialize and add the map
 function initMap() {
 
@@ -46,21 +52,16 @@ function initMap() {
   var lon = Number(lngElt.textContent);
 
   // The map, centered at right place
-    map = new google.maps.Map(document.getElementById("message").lastChild, {
+  map = new google.maps.Map(document.getElementById("message").lastChild, {
           zoom: 15,
           center: new google.maps.LatLng(lat, lon)});
 
-    //add a marker
-    var marker = new google.maps.Marker({
+  //add a marker
+  var marker = new google.maps.Marker({
         position: {lat: lat, lng: lon},
         map: map
     })
 
-}
-
-function mapZone() {
-    var $zone = $('<div  class="map-container d-flex justify-content-between mb-4" ></div>');
-    $("#message").append($zone)
 }
 
 //add all html code to display user message
@@ -112,6 +113,7 @@ input.addEventListener("keyup", function(event) {
     }
 });
 
+//to create the progress bar until 100%
 function progressBar() {
     function timer(n) {
         $(".progress-bar").css("width", n + "%");
@@ -125,7 +127,7 @@ function progressBar() {
     timer(0);
 }
 
-
+//to reinitialize the progress bar
 function progressBarnull() {
       $('.progress-bar').css("width", "0%")
 }

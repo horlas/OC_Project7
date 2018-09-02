@@ -13,14 +13,13 @@
 </header>
 
 
-<!--essai zone de tchat-->
+<!--zone de tchat-->
 
 <div class="card grey lighten-3 chat-room">
     <div class="card-body">
 
         <!-- Grid row -->
         <div class="row px-lg-2 px-2">
-
 
             <!-- Grid column -->
             <div class="col-md-3 col-xl-2 px-0">
@@ -32,7 +31,6 @@
                 <div class="chat-message">
 
                     <ul id="message" class="list-unstyled chat">
-
 
                         <!--first GdPy message-->
                         <li class="d-flex justify-content-between mb-4">
@@ -54,23 +52,19 @@
                         <div id="lat" style="display: none"></div>
                         <div id="lng" style="display: none"></div>
 
-
-                        <!--premiermessage GdPy-->
-
                     </ul>
                 </div>
                 <!--user input area-->
                     <div id="monancre" class="chat-message">
-                    <ul id="form" class="list-unstyled chat">
-                        <li class="white">
-                            <label for="target">As-tu une question pour Grandpy?</label>
-                            <div class="form-group basic-textarea">
-                                <input name="place" class="form-control pl-2 my-0" id="target" rows="3" placeholder="Tapez votre message ici..."  onclick='$("#target").val("");'>
-                            </div>
-                        </li>
-                        <button id="submit" type="button"  class="btn btn-info btn-lg">Dis moi GPy !</button>
-
-                    </ul>
+                        <ul id="form" class="list-unstyled chat">
+                            <li class="white">
+                                <label for="target">As-tu une question pour Grandpy?</label>
+                                <div class="form-group basic-textarea">
+                                    <input name="place" class="form-control pl-2 my-0" id="target" rows="3" placeholder="Tapez votre message ici..."  onclick='$("#target").val("");'>
+                                </div>
+                            </li>
+                            <button id="submit" type="button"  class="btn btn-info btn-lg">Dis moi GPy !</button>
+                        </ul>
                     </div>
                 <!--user input area-->
                 <!-- Progress bar -->
@@ -80,7 +74,7 @@
 
             </div>
             <!-- Grid column -->
-                        <!-- Grid column -->
+            <!-- Grid column -->
             <div class="col-md-3 col-xl-2 px-0">
             </div>
 
@@ -90,6 +84,7 @@
     </div>
 </div>
 
+ <!-- Footer -->
 <footer class="font-small ">
     <div class=" text-center py-3">
          <!-- Content -->
@@ -105,10 +100,6 @@
     </div>
 </footer>
  <!-- Footer -->
-
-
-
-
 
 {% endblock %}
 
