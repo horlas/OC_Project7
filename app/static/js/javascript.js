@@ -6,12 +6,9 @@ $(function() {
                 $("#monancre").hide();
                 $(".progress").show();
                 progressBar();
-
+                //display user input
+                getMes();
                 setTimeout(function() {
-
-                        //display user input
-                        getMes();
-                        console.log("Top");
                         //$.getJSON(--url, --data, --func)
                         $.getJSON(
                             //url
@@ -23,7 +20,6 @@ $(function() {
                                 $("#lat").text(data.lat);
                                 $("#lng").text(data.lng);
                                 addGPyMess(data.address);
-
                                 mapZone();
                                 initMap();
                                 addGPyMess(data.wikipedia);
@@ -33,9 +29,8 @@ $(function() {
                                 $(".progress").hide();
                                 //go to the bottom
                                 $('html,body').animate({scrollTop: $('#monancre').offset().top}, "slow");
-
                             })
-                    }, 4000);
+                    }, 3000);
 
                 return false;}
                 );
@@ -47,7 +42,6 @@ function initMap() {
   // The location of place
   var latElt = document.getElementById('lat');
   var lat = Number(latElt.textContent);
-  console.log(lat);
   var lngElt = document.getElementById('lng');
   var lon = Number(lngElt.textContent);
 
@@ -69,17 +63,6 @@ function mapZone() {
     $("#message").append($zone)
 }
 
-
-//catch user input onclick
-function getMes(){
-    var user_mes = $("#target").val();
-    console.log(user_mes);
-    addUserMes();
-    $('.us_mess').html(user_mes);
-}
-
-
-
 //add all html code to display user message
 function addUserMes() {
     var $divheader = $('<div class="header"></div>').append('<strong class="primary-font">Gentil Visiteur</strong>');
@@ -96,6 +79,13 @@ function addUserMes() {
 
     $("#message").append($zone)
 }
+//catch user input onclick
+function getMes(){
+    var user_mes = $("#target").val();
+    addUserMes();
+    $('.us_mess').last().html(user_mes);
+}
+
 //add all html code to display GdPy message, and take in argument data.adress from Ajax call
 function addGPyMess(message){
     var $divheader = $('<div class="header"></div>').append('<strong class="primary-font">Grand Py</strong>');
@@ -113,7 +103,6 @@ function addGPyMess(message){
     $("#message").append($zone)
 }
 
-
 //to activate Enter key on input form
 var input = document.getElementById("target");
 input.addEventListener("keyup", function(event) {
@@ -122,8 +111,6 @@ input.addEventListener("keyup", function(event) {
         document.getElementById("submit").click();
     }
 });
-
-
 
 function progressBar() {
     function timer(n) {
@@ -140,9 +127,6 @@ function progressBar() {
 
 
 function progressBarnull() {
-    console.log("top");
-
       $('.progress-bar').css("width", "0%")
-
 }
 

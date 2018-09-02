@@ -72,9 +72,6 @@ class ParsePlace():
             answer_beginning = random.choice(ANSWERSADD)
             self.address = "{}{}".format(answer_beginning,self.address)
 
-
-
-
 #Api Wikipedia
 def call_wiki_main_page(place):
     """Call Api Wikipedia"""
@@ -102,8 +99,6 @@ def call_wiki_found_page(title):
     response = requests.get(url)
     file = response.json()
     return file
-
-
 
 def some_words_about(place):
     """Extract and treat wikipedia contents"""
