@@ -129,7 +129,7 @@ def some_words_about(place):
 
 def some_words_about_whith_nothing():
     """when the user tape nothing """
-    response = requests.get('https://fr.wikipedia.org/w/api.php?action=query&titles=P%C3%A9tanque&prop=extracts&exsentences=3&format=json&explaintext')
+    response = requests.get('https://fr.wikipedia.org/w/api.php?action=query&titles=P%C3%A9tanque&prop=extracts&exsentences=3&format=json&explaintext&exlimit=max&exintro')
     file = response.json()
     a = file["query"]["pages"]
     # to skip pg id number witch differs from page to page
