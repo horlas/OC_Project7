@@ -92,7 +92,7 @@ def call_wiki_found_page(title):
     # format url
     url_begin = "https://fr.wikipedia.org/w/api.php?action=query&titles="
     url_title = title
-    url_end = "&prop=extracts&exsentences=3&format=json&explaintext"
+    url_end = "&prop=extracts&exsentences=3&format=json&explaintext&exlimit=max&exintro"
     url = "{}{}{}".format(url_begin, url_title, url_end)
 
     # call api
